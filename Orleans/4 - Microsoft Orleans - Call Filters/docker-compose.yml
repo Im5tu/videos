@@ -1,0 +1,16 @@
+version: '3.5'
+
+services:
+  localstack:
+    image: localstack/localstack:latest
+    hostname: localstack
+    container_name: localstack
+    restart: always
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=dynamodb
+      - HOSTNAME=localstack
+      - AWS_DEFAULT_REGION=eu-west-1
+      - AWS_ACCESS_KEY_ID=xx
+      - AWS_SECRET_ACCESS_KEY=xx
