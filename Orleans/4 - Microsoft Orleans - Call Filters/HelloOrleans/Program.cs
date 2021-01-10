@@ -1,3 +1,4 @@
+using HelloOrleans.CallFilters;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Orleans.Configuration;
@@ -43,6 +44,9 @@ namespace HelloOrleans
                         options.ClusterId = "my-first-cluster";
                         options.ServiceId = "my-first-service";
                     });
+
+                    // builder.AddIncomingGrainCallFilter<ConsoleWritingIncomingCallFilter>();
+                    // builder.AddOutgoingGrainCallFilter<ConsoleWritingOutgoingCallFilter>();
                 });
     }
 }
