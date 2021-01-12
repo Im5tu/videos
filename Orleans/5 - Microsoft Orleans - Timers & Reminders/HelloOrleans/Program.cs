@@ -31,6 +31,10 @@ namespace HelloOrleans
                         options.Service = "http://localhost:4566";
                         options.UseJson = true;
                     });
+                    builder.UseDynamoDBReminderService(options =>
+                    {
+                        options.Service = "http://localhost:4566";
+                    });
 
                     builder.Configure<EndpointOptions>(options =>
                     {
