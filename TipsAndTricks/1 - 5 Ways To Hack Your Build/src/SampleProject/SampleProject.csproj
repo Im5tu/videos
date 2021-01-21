@@ -2,9 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <PackageOutputPath>../../.nuget</PackageOutputPath>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.1.0</Version>
+    <Version>0.3.0</Version>
+    <Description>Hello Targets</Description>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NugetTargets" Version="0.3.0" PrivateAssets="All" />
+  </ItemGroup>
 
 </Project>

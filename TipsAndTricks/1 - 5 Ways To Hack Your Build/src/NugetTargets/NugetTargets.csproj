@@ -2,9 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <PackageOutputPath>../../.nuget</PackageOutputPath>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.1.0</Version>
+    <Description>Something AWESOME</Description>
+    <Version>0.3.0</Version>
+    <DevelopmentDependency>true</DevelopmentDependency>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="build/*" Pack="true" PackagePath="build/" />
+    <None Include="build/*" Pack="true" PackagePath="buildMultiTargeting/" />
+  </ItemGroup>
 
 </Project>

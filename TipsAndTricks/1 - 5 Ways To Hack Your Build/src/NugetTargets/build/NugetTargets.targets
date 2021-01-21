@@ -1,0 +1,5 @@
+<Project>
+    <Target Name="NugetValidation" BeforeTargets="GenerateNuSpec">
+        <Error Code="CWS001" Text="Description must be set to something please" Condition="$(Description) == ''" />
+    </Target>
+</Project>
