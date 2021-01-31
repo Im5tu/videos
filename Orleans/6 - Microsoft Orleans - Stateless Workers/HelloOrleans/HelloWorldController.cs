@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Orleans;
 using System.Threading.Tasks;
 
@@ -17,8 +17,9 @@ namespace HelloOrleans
         public async Task<IActionResult> Hello(string name)
         {
             var result = await clusterClient.GetGrain<IHelloWorldGrain>("Stu").SayHelloToAsync(name);
+            var randomNumber = await clusterClient.GetGrain<IMyStatelessWorker>(0).ComputeNextNumberAsync();
 
-            return Ok(result);
+            return Ok($"{result} {randomNumber}");
         }
     }
 }
