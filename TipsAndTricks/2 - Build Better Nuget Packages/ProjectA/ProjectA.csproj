@@ -1,7 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+      <TargetFramework>net5.0</TargetFramework>
+      <Description>This is my package description</Description>
+      <PackageTags>tag-a;tag-b</PackageTags>
+      <PackageProjectUrl>https://im5tu.io</PackageProjectUrl>
+      <Authors>im5tu;something;someone</Authors>
+      <Company>Contoso</Company>
+      <Copyright>This is my package copyright</Copyright>
+      <Title>My Awesome Title</Title>
+      <PackageLicenseExpression>MIT</PackageLicenseExpression>
+      <Deterministic>true</Deterministic>
+      <EmbedUntrackedSources>true</EmbedUntrackedSources>
+      <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+      <DebugType>embedded</DebugType>
+      <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+      <PublishRepositoryUrl>true</PublishRepositoryUrl>
     </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
 
 </Project>
