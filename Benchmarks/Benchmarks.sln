@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging", "Logging\Logging.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq", "Linq\Linq.csproj", "{C5EC84D5-989E-4AD2-9B73-91B5906FBCF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaticVsConstString", "StaticVsConstString\StaticVsConstString.csproj", "{175D7B12-8112-4E20-86F5-8A6A50355C4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,5 +88,17 @@ Global
 		{C5EC84D5-989E-4AD2-9B73-91B5906FBCF6}.Release|x64.Build.0 = Release|Any CPU
 		{C5EC84D5-989E-4AD2-9B73-91B5906FBCF6}.Release|x86.ActiveCfg = Release|Any CPU
 		{C5EC84D5-989E-4AD2-9B73-91B5906FBCF6}.Release|x86.Build.0 = Release|Any CPU
+		{175D7B12-8112-4E20-86F5-8A6A50355C4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{175D7B12-8112-4E20-86F5-8A6A50355C4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{175D7B12-8112-4E20-86F5-8A6A50355C4C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{175D7B12-8112-4E20-86F5-8A6A50355C4C}.Debug|x64.Build.0 = Debug|Any CPU
+		{175D7B12-8112-4E20-86F5-8A6A50355C4C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{175D7B12-8112-4E20-86F5-8A6A50355C4C}.Debug|x86.Build.0 = Debug|Any CPU
+		{175D7B12-8112-4E20-86F5-8A6A50355C4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{175D7B12-8112-4E20-86F5-8A6A50355C4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{175D7B12-8112-4E20-86F5-8A6A50355C4C}.Release|x64.ActiveCfg = Release|Any CPU
+		{175D7B12-8112-4E20-86F5-8A6A50355C4C}.Release|x64.Build.0 = Release|Any CPU
+		{175D7B12-8112-4E20-86F5-8A6A50355C4C}.Release|x86.ActiveCfg = Release|Any CPU
+		{175D7B12-8112-4E20-86F5-8A6A50355C4C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OpenTelemetry.Trace;
 
 namespace ProjectA
 {
@@ -19,6 +20,13 @@ namespace ProjectA
             
             services.AddHttpClient("ProjectB")
                     .ConfigureHttpClient(c => c.BaseAddress = new Uri("http://localhost:5002"));
+
+            services.AddOpenTelemetryTracing(builder =>
+            {
+                builder.AddAspNetCoreInstrumentation()
+                .AddHttpClientInstrumentation()
+                .AddJaegerExporter();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
