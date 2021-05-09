@@ -1,0 +1,64 @@
+name: 'Update Outdated Packages'
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 6 * * 1' # 6am every monday
+
+jobs:
+  outdated:
+    name: Update Outdated Packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+
+      - name: setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "3.1.x"
+
+      - name: install dotnet-outdated
+        run: |
+          dotnet tool install --global dotnet-outdated-tool
+          dotnet tool update --global dotnet-outdated-tool
+
+      - name: checkout new branch
+        run: git checkout -b dotnet-outdated
+
+      - name: run dotnet restore
+        run: dotnet restore
+
+      - name: run dotnet outdated
+        id: outdated
+        run: |
+          if dotnet outdated -u -f -vl major -exc BenchmarkDotNet -exc xunit.runner.visualstudio -exc Moq ; then
+            echo "::set-output name=has_changes::no"
+          else
+            echo "::set-output name=has_changes::yes"
+          fi
+
+      - name: commit and push changes
+        run: |
+          if [ "${{ steps.outdated.outputs.has_changes }}" = "no" ] ; then
+            echo "No updates today"
+          else
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git add .
+            git commit -m 'TDDO-0 - dotnet-outdated updates - minor and patch'
+            git push --set-upstream origin dotnet-outdated
+          fi
+
+      - name: create pr
+        run: |
+          if [ "${{ steps.outdated.outputs.has_changes }}" = "no" ] ; then
+            echo "No updates today"
+          else
+            curl --request POST \
+              --url https://api.github.com/repos/${{ github.repository }}/pulls \
+              --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+              --header 'content-type: application/json' \
+              --data '{ "title": "TDDO-0 - dotnet-outdated updates", "body": "Minor and Patch package updates", "head": "dotnet-outdated", "base": "master"}'
+          fi

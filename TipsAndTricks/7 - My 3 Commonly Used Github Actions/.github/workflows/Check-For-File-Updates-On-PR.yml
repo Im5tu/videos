@@ -1,0 +1,32 @@
+name: 'Check For File Updates On PR'
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
+
+jobs:
+  release:
+    name: Check For File Updates On PR
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Get Changed Files
+        if: github.ref != 'refs/heads/main'
+        id: changed
+        uses: foodee/pr-includes-file-change@master
+        with:
+          paths: ^src/my-file.txt
+      - name: Abort if module_version not updated
+        if: github.ref != 'refs/heads/main' && steps.changed.outputs.matched != 'true'
+        run: |
+          echo "Please update the file 'src/my-file.txt' to do the special thing for this repository"
+          exit 1
