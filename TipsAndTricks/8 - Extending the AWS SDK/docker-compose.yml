@@ -1,0 +1,17 @@
+version: "3.5"
+services:
+  localstack:
+    image: localstack/localstack:0.12.12
+    restart: always
+    ports:
+      - "4566:4566"
+    container_name: localstack
+    environment:
+      - HOSTNAME_EXTERNAL=localstack
+      - SERVICES=dynamodb,
+      - DEFAULT_REGION=eu-north-1
+      - AWS_ACCESS_KEY_ID=xxx
+      - AWS_SECRET_ACCESS_KEY=xxx
+      - AWS_DEFAULT_REGION=eu-north-1
+    volumes:
+      - ./scripts/init.sh:/docker-entrypoint-initaws.d/init.sh
